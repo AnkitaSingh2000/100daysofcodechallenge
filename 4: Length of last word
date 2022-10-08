@@ -28,7 +28,7 @@ s consists of only English letters and spaces ' '.
 There will be at least one word in s.
 
 
-CODE:
+CODE:  
 
 class Solution {
     public int lengthOfLastWord(String s) {
