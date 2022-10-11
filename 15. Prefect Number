@@ -26,7 +26,6 @@ CODE:
 
 
 
-
 class Solution {
     public boolean checkPerfectNumber(int num) {
         int sum = 1;
