@@ -1,0 +1,68 @@
+Given two strings s and goal, return true if you can swap two letters in s so the result is equal to goal, otherwise, return false.
+
+Swapping letters is defined as taking two indices i and j (0-indexed) such that i != j and swapping the characters at s[i] and s[j].
+
+For example, swapping at indices 0 and 2 in "abcd" results in "cbad".
+ 
+
+Example 1:
+
+Input: s = "ab", goal = "ba"
+Output: true
+Explanation: You can swap s[0] = 'a' and s[1] = 'b' to get "ba", which is equal to goal.
+Example 2:
+
+Input: s = "ab", goal = "ab"
+Output: false
+Explanation: The only letters you can swap are s[0] = 'a' and s[1] = 'b', which results in "ba" != goal.
+Example 3:
+
+Input: s = "aa", goal = "aa"
+Output: true
+Explanation: You can swap s[0] = 'a' and s[1] = 'a' to get "aa", which is equal to goal.
+ 
+
+Constraints:
+
+1 <= s.length, goal.length <= 2 * 104
+s and goal consist of lowercase letters.
+
+
+
+
+CODE:
+
+
+
+class Solution {
+    public boolean buddyStrings(String A, String B) {
+        if (A.length() != B.length() || A.isEmpty()) return false;
+        
+        if (!A.equals(B)) {
+            int count =0;
+            char first = 'a', second = 'a';
+            for (int i = 0; i < A.length(); i++) {
+                if (A.charAt(i) == B.charAt(i)) continue;
+                if (count >= 2) return false;
+                if (count == 0) {
+                    first = A.charAt(i);
+                    second = B.charAt(i);
+                    count++;
+                    continue;
+                }
+                if (A.charAt(i) != second || B.charAt(i) != first) return false;
+                count++;
+            }
+            return count == 2;
+        }
+
+        if (A.length() > 26) return true;
+        int [] fre = new int[26];
+        for (char c : A.toCharArray()) {
+            if (fre[c-'a'] == 1) return true;
+            fre[c-'a']++;
+        }
+        return false;
+        
+    }
+}
