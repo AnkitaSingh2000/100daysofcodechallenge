@@ -41,7 +41,7 @@ class Solution {
         int len=s.length();
         int num=0;
         int sign=1;
-        char dm=' ';
+        char dm=' '; 
         for(int i=0;i<len;i++){
             char c=s.charAt(i);
             if(Character.isDigit(c)){
